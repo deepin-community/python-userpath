@@ -1,0 +1,6 @@
+Tests: help
+Depends: userpath
+Restrictions: allow-stderr
+
+Tests: unittests3
+Depends: python3-all, python3-pytest, python3-userpath

@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eufx
+userpath --help
