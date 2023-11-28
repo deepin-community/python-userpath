@@ -1,0 +1,9 @@
+---
+Bug-Database: https://github.com/ofek/userpath/issues
+Bug-Submit: https://github.com/ofek/userpath/issues/new/choose
+Changelog: https://github.com/ofek/userpath/blob/master/HISTORY.rst
+Registry:
+  - Name: PyPI
+    Entry: userpath
+Repository: https://github.com/ofek/userpath.git
+Repository-Browse: https://github.com/ofek/userpath.git

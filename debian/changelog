@@ -1,5 +1,79 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-userpath (1.9.1-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 22 Sep 2023 22:17:00 +0530
+
+python-userpath (1.9.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update copyright.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 20 Jul 2023 10:38:41 +0200
+
+python-userpath (1.8.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upstream relicensed to simply the Expat license.
+  * Avoid modifying config files in $HOME during tests and autopkgtest by
+    creating a temporary $HOME.
+  * Upstream moved to the hatchling build system, Build-Depend on
+    python3-hatchling and pybuild-plugin-pyproject.
+  * Build for all supported Python 3 versions.
+  * Bump Standards-Version to 4.6.0, no changes needed.
+  * Remove unnecessary watch file options.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 14 Feb 2022 10:01:46 -0400
+
+python-userpath (1.7.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Adopt python-userpath to the Debian Python Team. Thanks for taking care of
+    it until now, Jonas.
+  * Drop dependency on python3-distro, following upstream.
+  * Add autopkgtest that runs the upstream test suite.
+  * Add autopkgtest that runs --help.
+  * Add upstream metadata.
+  * Move python3-userpath into the python section.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 10 Aug 2021 11:48:33 -0400
+
+python-userpath (1.4.2-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release
+
+  [ Jonas Smedegaard ]
+  * declare compliance with Debian Policy 4.5.1
+  * use debhelper compatibility level 13 (not 12)
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 07 Feb 2021 03:53:10 +0100
+
+python-userpath (1.4.1-1) unstable; urgency=medium
+
+  [ upstream ]
+  * new release(s)
+
+  [ Jonas Smedegaard ]
+  * enable autopkgtest
+  * fix cleanup after build
+  * simplify source script copyright-check
+
+ -- Jonas Smedegaard <dr@jones.dk>  Thu, 24 Sep 2020 16:20:28 +0200
+
+python-userpath (1.3.0-2) unstable; urgency=medium
+
+  * watch:
+    + use dversionmangle=auto
+    + drop unused repacksuffix
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 05 Apr 2020 14:35:58 +0200
+
+python-userpath (1.3.0-1) experimental; urgency=low
+
+  * initial packaging release
+    closes: bug#951485
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 17 Feb 2020 12:11:55 +0100

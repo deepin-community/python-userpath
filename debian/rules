@@ -1,4 +1,33 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+
+# detect if build targets experimental suite (or is a draft)
+DEB_SUITE_EXP = $(filter experimental% UNRELEASED,$(DEB_DISTRIBUTION))
+
+
+cmd = userpath
+_ENV = $(strip \
+ PATH="$(CURDIR)/debian/tmp/usr/bin:$(PATH)" \
+ PYTHONPATH="$(CURDIR)/debian/tmp/usr/lib/$(shell py3versions -d)/dist-packages")
+
+# generate manpage with help2man from --help option of python script
+_mkman = $(_ENV) \
+ help2man $(if $3,--name "$(strip $3)") --no-info --version-string $(DEB_VERSION_UPSTREAM) --output $2 $1 \
+ || { $(_ENV) $1 --help; false; }
+
 %:
-	dh $@
+	dh $@ --buildsystem=pybuild
+
+override_dh_auto_test:
+	$(eval TMPHOME := $(shell mktemp -d))
+	cp -a /etc/skel/. $(TMPHOME)/
+	HOME=$(TMPHOME) dh_auto_test $(if $(DEB_SUITE_EXP),|| true)
+	rm -rf $(TMPHOME)/
+
+# * generate manpage based on --help option of script itself
+execute_after_dh_auto_install:
+	$(call _mkman, $(cmd), debian/$(cmd).1, \
+		tool for adding locations to the user PATH)
+	find debian/tmp/usr/lib -name '*.pyc' -delete
+	find debian/tmp/usr/lib -type d -empty -delete

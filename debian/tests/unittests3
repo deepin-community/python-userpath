@@ -1,0 +1,17 @@
+#!/bin/sh
+set -efu
+
+export LC_ALL=C.UTF-8
+
+pythons="$(py3versions -r 2> /dev/null)"
+
+cp -a tests "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+cp -a /etc/skel home
+export HOME="$AUTOPKGTEST_TMP/home"
+
+for py in $pythons; do
+	echo "=== $py ==="
+	$py -m pytest tests/ 2>&1
+done
